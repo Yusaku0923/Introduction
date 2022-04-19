@@ -19,3 +19,10 @@ Route::get('/', function () {
 });
 
 Route::get('crud', [CrudController::class, 'index'])->name('curd.index');
+
+Route::group(['prefix' => 'student'], function () {
+    Route::get('', [CrudController::class, 'index'])->name('student.index');           // 一覧
+    Route::get('new', [CrudController::class, 'create'])->name('student.create');     // 入力
+    Route::patch('new',[CrudController::class, 'confirm'])->name('student.confirm'); // 確認
+    Route::post('new', [CrudController::class, 'store'])->name('student.store');    // 完了
+});
